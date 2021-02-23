@@ -1,0 +1,137 @@
+\documentclass{article}
+
+\usepackage[parfill]{parskip}
+\usepackage{
+  geometry,
+  float,
+  listings,
+  xcolor,
+  amssymb,
+  fontspec,
+  graphicx,
+  hyperref,
+}
+
+\graphicspath{ {../imgs/} }
+
+% To keep figures, listings, and tables rendered where they're put
+% *** BEGIN ***
+\let\origfigure\figure
+\let\endorigfigure\endfigure
+\renewenvironment{figure}[1][2] {
+    \expandafter\origfigure\expandafter[H]
+} {
+    \endorigfigure
+}
+
+\AtBeginDocument{\floatplacement{codelisting}{H}}
+\AtBeginDocument{\floatplacement{table}{H}}
+% *** END ***
+
+\geometry{
+  top = 20mm,
+  bottom = 20mm,
+  left = 25mm,
+  right = 25mm,
+  paper = a4paper,
+}
+
+\setmainfont{Times New Roman}
+\setmonofont{JetBrainsMono Nerd Font Mono}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstset{% https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+  basicstyle = \footnotesize\ttfamily,
+  breakatwhitespace = true,
+  breaklines = true,
+  frame = single,
+  firstnumber = 1,
+  keepspaces = true,
+  numbers = left,
+  tabsize = 4,
+  backgroundcolor=\color{backcolour},
+  commentstyle=\color{codegray},
+  keywordstyle=\color{orange},
+  numberstyle=\tiny\color{codegray},
+  stringstyle=\color{codegreen},
+  basicstyle=\ttfamily\footnotesize,
+}
+
+% https://github.com/gilangardya/if2211-cryptarithmetic-solver/blob/master/doc/LaporanTucil1.pdf
+
+\begin{document}
+\begin{titlepage}
+  \centering
+  \vspace*{\stretch{2}}
+  \Large Laporan Tugas Kecil I
+
+  \large Dekripsi \textit{Cryptarithmetic} dengan \textit{Brute Force}
+
+  \normalsize
+
+  \vspace{\stretch{1}}
+
+  \includegraphics[scale=0.2]{logo-itb.png}
+
+  \vspace{\stretch{1}}
+  \begin{tabular}{lll}
+    Nama  &: & Josep Marcello \\
+    NIM &: & 13519164 \\
+    Kelas &: & K-03 \\
+    Dosen &: & Prof.\ Dwi Hendratmo Widyantoro \\
+    Bahasa &: & Java \\
+  \end{tabular}
+
+  \vspace{\stretch{2}}
+  \large
+  PROGRAM STUDI TEKNIK INFORMATIKA
+
+  SEKOLAH TEKNIK ELEKTRO DAN INFORMATIKA
+
+  INSTITUT TEKNOLOGI BANDUNG
+
+  BANDUNG
+
+  2021
+
+  \vspace{\stretch{2}}
+\end{titlepage}
+
+\section{Algoritma \textit{Decrease and Conquer}}
+\begin{enumerate}
+\end{enumerate}
+
+\section{\textit{Source Code} Program}
+\begin{lstlisting}[caption = main.java, language = java]
+\end{lstlisting}
+
+\section{Hasil Pengujian}
+
+\subsection{Tabel Penilaian}
+\begin{table}
+  \begin{center}
+    \begin{tabular}{|p{7cm} | l | l|}
+      \hline
+      Poin & Ya & Tidak \\
+      \hline
+      1. Program berhasil dikompilasi & \checkmark & \\
+      \hline
+      2. Program berhasil \textit{running} & \checkmark & \\
+      \hline
+      3. Program dapat menerima berkas input dan menuliskan output & \checkmark & \\
+      \hline
+      4. Luaran sudah benar untuk semua kasus input & & \checkmark \\
+      \hline
+    \end{tabular}
+  \end{center}
+\end{table}
+
+\section*{\textit{Link} ke \textit{repository} Github}
+\href{https://github.com/jspmarc/Tucil1_13519164}{\textit{Link} ke
+\textit{repository}}: https://github.com/jspmarc/Tucil1\_13519164.
+
+\end{document}
