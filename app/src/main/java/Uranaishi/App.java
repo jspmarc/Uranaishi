@@ -13,11 +13,20 @@ import java.util.Scanner;
  */
 public class App {
     private static void printResult(ArrayList<ArrayList<Node>> nodes) {
+        int i = 1;
         for (ArrayList<Node> vertList : nodes) {
+            System.out.print("Semester " + i + ": ");
+            int j = 0;
             for (Node node : vertList) {
-                System.out.println(node.getInfo());
+                if (j != vertList.size()-1) {
+                    System.out.print(node.getInfo() + ", ");
+                } else {
+                    System.out.print(node.getInfo());
+                }
+                ++j;
             }
-            System.out.println("====");
+            System.out.println();
+            ++i;
         }
     }
     public static void main(String[] args) throws IOException, FileNotFoundException {
