@@ -14,9 +14,7 @@ import java.util.ArrayList;
 public class Graph {
     // *** attribute ***
     /// adjacency list untuk graf
-    private HashMap<Node, ArrayList<Node>> nodes;
-    /// node batas yang menandakan antarrekursi topology sort
-    public Node nodeBatas = new Node("bruh moment");
+    private HashMap<Node, ArrayList<Node>> outEdges;
 
     // *** Getters and setters ***
 
@@ -25,7 +23,7 @@ public class Graph {
      * Konstruktor graf kosong
      */
     public Graph() {
-        nodes = new HashMap<>();
+        outEdges = new HashMap<>();
     }
 
     /**
@@ -36,7 +34,7 @@ public class Graph {
      * berukuran [n][2], n sebuah integer
      */
     public Graph(Node[] v, Node[][] e) {
-        nodes =  new HashMap<>();
+        outEdges =  new HashMap<>();
         for (Node[] adjNodes : e) {
             // add edge otomatis nambahin vertex kalo vertex-nya belom ada
             addEdge(adjNodes[0], adjNodes[1]);
@@ -53,10 +51,10 @@ public class Graph {
      */
     public void addEdge(Node src, Node dest) {
         if (src != dest) {
-            ArrayList<Node> adjList = nodes.get(src);
+            ArrayList<Node> adjList = outEdges.get(src);
             if (adjList == null) {
                 adjList = new ArrayList<Node>();
-                nodes.put(src, adjList);
+                outEdges.put(src, adjList);
             }
 
             adjList.add(dest);
@@ -69,8 +67,8 @@ public class Graph {
      * @param n1 sudut yang akan ditambahkan ke graf
      */
     public void addVertex(Node n1) {
-        if (!nodes.containsKey(n1)) {
-            nodes.put(n1, new ArrayList<Node>());
+        if (!outEdges.containsKey(n1)) {
+            outEdges.put(n1, new ArrayList<Node>());
         }
     }
 
@@ -79,7 +77,7 @@ public class Graph {
      */
     public void print() {
         Iterator<Map.Entry<Node, ArrayList<Node>>> it =
-            nodes.entrySet().iterator();
+            outEdges.entrySet().iterator();
 
         while (it.hasNext()) {
             Map.Entry<Node, ArrayList<Node>> node =
@@ -109,78 +107,76 @@ public class Graph {
         }
     }
 
-    private void removeOccurance(Node n) {
+    /**
+     * Fungsi untuk menghapus sebuah vertex dari graf
+     * @param n vertex yang ingin dihapus
+     */
+    private void removeVertex(Node n) {
+        // iterasi key-nya
         Iterator<Map.Entry<Node, ArrayList<Node>>> it =
-            nodes.entrySet().iterator();
-
+            outEdges.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<Node, ArrayList<Node>> nodeEntry =
                 (Map.Entry<Node, ArrayList<Node>>) it.next();
 
             ArrayList<Node> adjVert = nodeEntry.getValue();
 
+            // kalau key-nya adalah elemen yang mau di-remove, remove vertex
             if (nodeEntry.getKey().equals(n)) {
-                continue;
+                it.remove();
             }
 
+            // iterasi adjacency list setiap sudut
             Iterator<Node> itN = adjVert.iterator();
             while(itN.hasNext()) {
                 Node vert = itN.next();
                 if (vert.equals(n)) {
+                    // hapus kalo ada vertex n di dalem adjacency list
                     itN.remove();
                 }
             }
         }
     }
 
-    public void topoSort(ArrayList<Node> ret, int iter) {
-        if (nodes.isEmpty() || iter == 4) return;
-        ArrayList<Node> takenNow = new ArrayList<>();
-        Iterator<Map.Entry<Node, ArrayList<Node>>> it =
-            nodes.entrySet().iterator();
+    /**
+     * Fungsi untuk mengurutkan graf dengan topological sort. PERHATIAN: fungsi
+     * ini akan menghapus isi graf.
+     * @return Urutan vertexes berdasarkan requirements yang sudah
+     * dipisah-pisah
+     */
+    public ArrayList<ArrayList<Node>> topoSort() {
+        if (outEdges.isEmpty()) {
+            return new ArrayList<ArrayList<Node>>();
+        }
 
+        ArrayList<Node> takenNow = new ArrayList<>();
+        ArrayList<ArrayList<Node>> ret = new ArrayList<>();
+
+        // iterasiin vertices-nya
+        Iterator<Map.Entry<Node, ArrayList<Node>>> it =
+            outEdges.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<Node, ArrayList<Node>> nodeEntry =
                 (Map.Entry<Node, ArrayList<Node>>) it.next();
 
             ArrayList<Node> adjVert = nodeEntry.getValue();
-            int len = adjVert.size();
 
-            // cek udah ambil prereq atau belom
-            boolean hasTakenPrereq = len == 0;
-            if (!hasTakenPrereq) {
-                hasTakenPrereq = true;
-                for (Node vert : adjVert) {
-                    if (!ret.contains(vert)) {
-                        System.out.println("=====================");
-                        System.out.print(vert.getInfo() + '\t');
-                        System.out.println("\n=====================");
-                        hasTakenPrereq = false;
-                        break;
-                    }
-                }
-            }
-
-            if (hasTakenPrereq) {
-                System.out.println("======");
-                print();
+            // kalo ga ada adjacent vertex
+            if (adjVert.isEmpty()) {
+                // tambahkan vertex tadi ke list
                 takenNow.add(nodeEntry.getKey());
-                it.remove();
-                System.out.println("------");
-                print();
-                System.out.println("======");
             }
+        }
 
-            //for (Node node : ret) {
-                //System.out.println(node.getInfo());
-            //}
-
-            //removeOccurance(nodeEntry.getKey());
+        // hapus vertex yang sudah "diambil"
+        for (Node vert : takenNow) {
+            removeVertex(vert);
         }
 
         // ulangi toposort
-        ret.addAll(takenNow);
-        ret.add(nodeBatas);
-        topoSort(ret, ++iter);
+        ret.add(takenNow);
+        ret.addAll(topoSort());
+
+        return ret;
     }
 }

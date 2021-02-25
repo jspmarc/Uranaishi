@@ -1,7 +1,6 @@
 package Uranaishi;
 
 import Uranaishi.lib.*;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +12,14 @@ import java.util.Scanner;
  * 25 Februari 2021
  */
 public class App {
+    private static void printResult(ArrayList<ArrayList<Node>> nodes) {
+        for (ArrayList<Node> vertList : nodes) {
+            for (Node node : vertList) {
+                System.out.println(node.getInfo());
+            }
+            System.out.println("====");
+        }
+    }
     public static void main(String[] args) throws IOException, FileNotFoundException {
         Scanner scan = new Scanner(System.in);
         Parser fp = null;
@@ -44,13 +51,13 @@ public class App {
         scan.close();
         fp.close();
 
+        System.out.println("Graf masukan:\n");
         g1.print();
-        ArrayList<Node> nodes = new ArrayList<Node>();
-        g1.topoSort(nodes, 0);
-        for (Node node : nodes) {
-            System.out.println(node.getInfo());
-        }
-        System.out.println(nodes.size());
-        //g1.print();
+
+        System.out.println("\n----------------------------\n");
+        System.out.println("Hasil topological sort:\n");
+
+        ArrayList<ArrayList<Node>> nodes = g1.topoSort();
+        printResult(nodes);
     }
 }
