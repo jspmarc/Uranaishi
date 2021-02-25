@@ -1,16 +1,19 @@
-/**
- * Berkas java utama untuk aplikasi Uranishi
- * Josep Marcello
- * 25 Februari 2021
- */
 package Uranaishi;
 
 import Uranaishi.lib.*;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Berkas java utama untuk aplikasi Uranishi
+ * @author Josep Marcello
+ * 25 Februari 2021
+ */
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException, FileNotFoundException {
         Scanner scan = new Scanner(System.in);
         Parser fp = null;
         Graph g1 = new Graph();
@@ -36,16 +39,18 @@ public class App {
             fp = new Parser(input);
         }
 
-        try {
-            fp.openFile();
-            g1 = fp.parse();
-            scan.close();
-            fp.close();
-        } catch (Exception e) {
-            System.err.println("Terjadi kesalahan fatal " + e + ".");
-            System.exit(1);
-        }
+        fp.openFile();
+        g1 = fp.parse();
+        scan.close();
+        fp.close();
 
         g1.print();
+        ArrayList<Node> nodes = new ArrayList<Node>();
+        g1.topoSort(nodes, 0);
+        for (Node node : nodes) {
+            System.out.println(node.getInfo());
+        }
+        System.out.println(nodes.size());
+        //g1.print();
     }
 }

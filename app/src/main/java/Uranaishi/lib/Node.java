@@ -1,9 +1,3 @@
-/**
- * Library bantuan untuk membuat elemen graph, yaitu nodes
- * Josep Marcello
- * 25 February 2020
- */
-
 package Uranaishi.lib;
 
 /**
@@ -32,5 +26,14 @@ public class Node {
      */
     public Node(String info) {
         this.info = info;
+    }
+
+    /**
+     * Fungsi untuk membandingkan node "this" dengan node lain
+     * @param n2 node lain yang ingin dibandingkan dengan node "this"
+     * @return true jika kedua node sama, false jika tidak
+     */
+    public boolean equals(Node n2) {
+        return info.equals(n2.info);
     }
 }

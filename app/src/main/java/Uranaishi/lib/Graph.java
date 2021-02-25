@@ -15,11 +15,12 @@ public class Graph {
     // *** attribute ***
     /// adjacency list untuk graf
     private HashMap<Node, ArrayList<Node>> nodes;
+    /// node batas yang menandakan antarrekursi topology sort
+    public Node nodeBatas = new Node("bruh moment");
 
     // *** Getters and setters ***
 
     // *** Methods **
-
     /**
      * Konstruktor graf kosong
      */
@@ -36,11 +37,8 @@ public class Graph {
      */
     public Graph(Node[] v, Node[][] e) {
         nodes =  new HashMap<>();
-        for (int i = 0; i < v.length; ++i) {
-            addVertex(v[i]);
-        }
-
         for (Node[] adjNodes : e) {
+            // add edge otomatis nambahin vertex kalo vertex-nya belom ada
             addEdge(adjNodes[0], adjNodes[1]);
         }
     }
@@ -80,7 +78,8 @@ public class Graph {
      * Fungsi untuk menuliskan isi DAG (ditunjukkan sebagai adjacency list)
      */
     public void print() {
-        Iterator<Map.Entry<Node, ArrayList<Node>>> it = nodes.entrySet().iterator();
+        Iterator<Map.Entry<Node, ArrayList<Node>>> it =
+            nodes.entrySet().iterator();
 
         while (it.hasNext()) {
             Map.Entry<Node, ArrayList<Node>> node =
@@ -90,12 +89,14 @@ public class Graph {
             int adjacentVertexCount = adjcentVertexes.size();
             Node vertex = node.getKey();
 
+            // tulis vertex
             if (adjacentVertexCount != 0) {
                 System.out.print(vertex.getInfo() + "->");
             } else {
                 System.out.print(vertex.getInfo());
             }
 
+            // tulis sudut-sudut yang bertetanggaan dengan vertex
             int i = 0;
             for (Node adjacentVertex : adjcentVertexes) {
                 if (i++ != adjacentVertexCount-1) {
@@ -106,5 +107,80 @@ public class Graph {
             }
             System.out.println();
         }
+    }
+
+    private void removeOccurance(Node n) {
+        Iterator<Map.Entry<Node, ArrayList<Node>>> it =
+            nodes.entrySet().iterator();
+
+        while (it.hasNext()) {
+            Map.Entry<Node, ArrayList<Node>> nodeEntry =
+                (Map.Entry<Node, ArrayList<Node>>) it.next();
+
+            ArrayList<Node> adjVert = nodeEntry.getValue();
+
+            if (nodeEntry.getKey().equals(n)) {
+                continue;
+            }
+
+            Iterator<Node> itN = adjVert.iterator();
+            while(itN.hasNext()) {
+                Node vert = itN.next();
+                if (vert.equals(n)) {
+                    itN.remove();
+                }
+            }
+        }
+    }
+
+    public void topoSort(ArrayList<Node> ret, int iter) {
+        if (nodes.isEmpty() || iter == 4) return;
+        ArrayList<Node> takenNow = new ArrayList<>();
+        Iterator<Map.Entry<Node, ArrayList<Node>>> it =
+            nodes.entrySet().iterator();
+
+        while (it.hasNext()) {
+            Map.Entry<Node, ArrayList<Node>> nodeEntry =
+                (Map.Entry<Node, ArrayList<Node>>) it.next();
+
+            ArrayList<Node> adjVert = nodeEntry.getValue();
+            int len = adjVert.size();
+
+            // cek udah ambil prereq atau belom
+            boolean hasTakenPrereq = len == 0;
+            if (!hasTakenPrereq) {
+                hasTakenPrereq = true;
+                for (Node vert : adjVert) {
+                    if (!ret.contains(vert)) {
+                        System.out.println("=====================");
+                        System.out.print(vert.getInfo() + '\t');
+                        System.out.println("\n=====================");
+                        hasTakenPrereq = false;
+                        break;
+                    }
+                }
+            }
+
+            if (hasTakenPrereq) {
+                System.out.println("======");
+                print();
+                takenNow.add(nodeEntry.getKey());
+                it.remove();
+                System.out.println("------");
+                print();
+                System.out.println("======");
+            }
+
+            //for (Node node : ret) {
+                //System.out.println(node.getInfo());
+            //}
+
+            //removeOccurance(nodeEntry.getKey());
+        }
+
+        // ulangi toposort
+        ret.addAll(takenNow);
+        ret.add(nodeBatas);
+        topoSort(ret, ++iter);
     }
 }

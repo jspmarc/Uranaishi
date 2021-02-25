@@ -48,7 +48,7 @@ public class Parser {
            vertex = new Node(vertexesStrings[0]);
         }
 
-        //
+        // ngehapus titik dari adjacent vertex terakhir
         int i = 1;
         int len = vertexesStrings.length;
         Node[] adjVert = new Node[vertexesStrings.length-1];
@@ -84,6 +84,7 @@ public class Parser {
      */
     public Graph parse() throws IOException {
         Graph ret = new Graph();
+
         String line = bufRead.readLine();
         while (line != null) {
             Node[][] lineParsed = parseLine(line);
