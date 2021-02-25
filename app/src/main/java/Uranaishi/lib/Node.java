@@ -12,8 +12,8 @@ public class Node {
 
     // *** Getters and setters ***
     /**
-     * Getter atribut name
-     * @return atribut name
+     * Getter name attribute
+     * @return the name of the node
      */
     public String getName() {
         return this.name;
@@ -21,8 +21,8 @@ public class Node {
 
     // *** Methods **
     /**
-     * Konstruktor untuk class Node
-     * @param name nama node
+     * Constructor for the node class
+     * @param name name of the node
      */
     public Node(String name) {
         this.name = name;

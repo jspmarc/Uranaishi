@@ -1,8 +1,7 @@
 /**
- * Library bantuan untuk membuat graph berarah dengan adjacency list dan
- * hashmap.
+ * Helper library to make a DAG using adjacency list and hashmap
  * Josep Marcello
- * 25 Februari 2020
+ * 25 February 2020
  */
 
 package Uranaishi.lib;
@@ -14,16 +13,16 @@ import java.util.ArrayList;
 
 public class Graph {
     // *** attribute ***
+    /// adjacency list of the graph
     private HashMap<Node, ArrayList<Node>> nodes = new HashMap<>();
 
     // *** Getters and setters ***
 
     // *** Methods **
     /**
-     * Konstruktor graf
-     * Graf yang dibuat adalah graf berarah yang hanya memiliki vertes (sudut),
-     * tapi tidak memiliki edge (sisi)
-     * @param n array of nodes yang berisi sudut-sudut
+     * Graph constructor
+     * The constructed graph is a DAG with only vertexes and no edges
+     * @param n array of nodes, contains the vertexes of the graph
      */
     public Graph(Node ...n) {
         for (int i = 0; i < n.length; ++i) {
@@ -32,9 +31,9 @@ public class Graph {
     }
 
     /**
-     * Fungsi untuk menambahkan sisi/edge berarah antara 2 sisi
-     * @param src graf asal
-     * @param dest graf tujuan
+     * Function to add a directed edge between 2 vertexes
+     * @param src source vertex
+     * @param dest destination vertex
      */
     public void addEdge(Node src, Node dest) {
         ArrayList<Node> adjList = nodes.get(src);
@@ -47,15 +46,16 @@ public class Graph {
     }
 
     /**
-     * Fungsi untuk menambahkan sudut/vertex ke graf
-     * @param n1 node (sudut) yang ingin ditambahkan ke graf
+     * Function to add a vertex to the graph
+     * @param n1 node/vertex to be added to the graph
      */
     public void addNode(Node n1) {
         nodes.put(n1, new ArrayList<Node>());
     }
 
     /**
-     * Fungsi untuk menuliskan isi graf (ditampilkan sebagai adjacency list)
+     * Function to write the contents of the graph (shown as an adjacency
+     * list)
      */
     public void print() {
         Iterator<Map.Entry<Node, ArrayList<Node>>> it = nodes.entrySet().iterator();
@@ -64,10 +64,10 @@ public class Graph {
             Map.Entry<Node, ArrayList<Node>> node = (Map.Entry<Node, ArrayList<Node>>) it.next();
 
             ArrayList<Node> adjcentVertexes = node.getValue();
-            int banyakAdjacentVertex = adjcentVertexes.size();
+            int adjacentVertexCount = adjcentVertexes.size();
             Node vertex = node.getKey();
 
-            if (banyakAdjacentVertex != 0) {
+            if (adjacentVertexCount != 0) {
                 System.out.print(vertex.getName() + " -> ");
             } else {
                 System.out.print(vertex.getName());
@@ -75,7 +75,7 @@ public class Graph {
 
             int i = 0;
             for (Node adjacentVertex : adjcentVertexes) {
-                if (i++ != banyakAdjacentVertex-1) {
+                if (i++ != adjacentVertexCount-1) {
                     System.out.print(adjacentVertex.getName() + " -> ");
                 } else {
                     System.out.print(adjacentVertex.getName());
