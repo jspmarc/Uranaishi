@@ -3,12 +3,20 @@
  */
 package Uranaishi;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import Uranaishi.lib.*;
 
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        Node stima = new Node("Stima"),
+             matdis = new Node("Matdis"),
+             kalkulus = new Node("Kalkulus");
+
+        Graph g1 = new Graph(stima, matdis, kalkulus);
+
+        g1.addEdge(stima, matdis);
+        g1.addEdge(stima, kalkulus);
+        g1.addEdge(matdis, kalkulus);
+
+        g1.print();
     }
 }
