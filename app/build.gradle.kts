@@ -28,3 +28,8 @@ application {
     // Define the main class for the application.
     mainClass.set("Uranaishi.App")
 }
+
+val run by tasks.getting(JavaExec::class) {
+    standardInput = System.`in`
+}
+
