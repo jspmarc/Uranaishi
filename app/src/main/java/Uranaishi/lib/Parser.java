@@ -87,15 +87,16 @@ public class Parser {
 
         String line = bufRead.readLine();
         while (line != null) {
-            Node[][] lineParsed = parseLine(line);
-            Node vertex = lineParsed[0][0];
-            Node[] adjVert = lineParsed[1];
+            if (line.length() != 0) {
+                Node[][] lineParsed = parseLine(line);
+                Node vertex = lineParsed[0][0];
+                Node[] adjVert = lineParsed[1];
 
-            ret.addVertex(vertex);
-            for (Node adj : adjVert) {
-                ret.addEdge(vertex, adj);
+                ret.addVertex(vertex);
+                for (Node adj : adjVert) {
+                    ret.addEdge(vertex, adj);
+                }
             }
-
             line = bufRead.readLine();
         }
 

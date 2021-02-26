@@ -1,8 +1,7 @@
 package Uranaishi.lib;
 
 /**
- * Kelas yang merepresentasikan node (sudut) pada graf/elemen pada linked
- * list.
+ * Kelas yang merepresentasikan node (sudut) pada graf
  * @author Josep Marcello
  * 25 Februari 2021
  */

@@ -2,7 +2,6 @@ package Uranaishi.lib;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +13,7 @@ import java.util.ArrayList;
 public class Graph {
     // *** attribute ***
     /// adjacency list untuk graf
-    private HashMap<Node, ArrayList<Node>> outEdges;
+    private HashMap<Node, ArrayList<Node>> inEdges;
 
     // *** Getters and setters ***
 
@@ -23,7 +22,7 @@ public class Graph {
      * Konstruktor graf kosong
      */
     public Graph() {
-        outEdges = new HashMap<>();
+        inEdges = new HashMap<>();
     }
 
     /**
@@ -34,7 +33,7 @@ public class Graph {
      * berukuran [n][2], n sebuah integer
      */
     public Graph(Node[] v, Node[][] e) {
-        outEdges =  new HashMap<>();
+        inEdges =  new HashMap<>();
         for (Node[] adjNodes : e) {
             // add edge otomatis nambahin vertex kalo vertex-nya belom ada
             addEdge(adjNodes[0], adjNodes[1]);
@@ -42,19 +41,19 @@ public class Graph {
     }
 
     /**
-     * Fungsi untuk menambahkan sebuah sisi berarah antara 2 sudut. Untuk
-     * kebutuhan aplikasi Uranaishi, jika sudut asal dan sudut tujuan sama,
-     * maka tidak akan dilakukan apa-apa. Selain itu, jika sudut asal tidak ada
-     * di graf, maka akan ditambahkan secara otomatis ke graf
+     ` Fungsi untuk menambahkan sebuah sisi berarah antara 2 sudut. Jika sudut
+     * asal dan sudut tujuan sama, maka tidak akan dilakukan apa-apa. Selain
+     * itu, jika sudut asal tidak ada di graf, maka akan ditambahkan secara
+     * otomatis ke graf
      * @param src sudut asal
      * @param dest sudut tujuan
      */
     public void addEdge(Node src, Node dest) {
         if (src != dest) {
-            ArrayList<Node> adjList = outEdges.get(src);
+            ArrayList<Node> adjList = inEdges.get(src);
             if (adjList == null) {
                 adjList = new ArrayList<Node>();
-                outEdges.put(src, adjList);
+                inEdges.put(src, adjList);
             }
 
             adjList.add(dest);
@@ -67,8 +66,8 @@ public class Graph {
      * @param n1 sudut yang akan ditambahkan ke graf
      */
     public void addVertex(Node n1) {
-        if (!outEdges.containsKey(n1)) {
-            outEdges.put(n1, new ArrayList<Node>());
+        if (!inEdges.containsKey(n1)) {
+            inEdges.put(n1, new ArrayList<Node>());
         }
     }
 
@@ -76,22 +75,15 @@ public class Graph {
      * Fungsi untuk menuliskan isi DAG (ditunjukkan sebagai adjacency list)
      */
     public void print() {
-        Iterator<Map.Entry<Node, ArrayList<Node>>> it =
-            outEdges.entrySet().iterator();
-
-        while (it.hasNext()) {
-            Map.Entry<Node, ArrayList<Node>> node =
-                (Map.Entry<Node, ArrayList<Node>>) it.next();
-
-            ArrayList<Node> adjcentVertexes = node.getValue();
+        for (Node vert: inEdges.keySet()) {
+            ArrayList<Node> adjcentVertexes = inEdges.get(vert);
             int adjacentVertexCount = adjcentVertexes.size();
-            Node vertex = node.getKey();
 
             // tulis vertex
             if (adjacentVertexCount != 0) {
-                System.out.print(vertex.getInfo() + "->");
+                System.out.print(vert.getInfo() + "->");
             } else {
-                System.out.print(vertex.getInfo());
+                System.out.print(vert.getInfo());
             }
 
             // tulis sudut-sudut yang bertetanggaan dengan vertex
@@ -113,24 +105,21 @@ public class Graph {
      */
     private void removeVertex(Node n) {
         // iterasi key-nya
-        Iterator<Map.Entry<Node, ArrayList<Node>>> it =
-            outEdges.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<Node, ArrayList<Node>> nodeEntry =
-                (Map.Entry<Node, ArrayList<Node>>) it.next();
-
-            ArrayList<Node> adjVert = nodeEntry.getValue();
+        Iterator<Node> itV = inEdges.keySet().iterator();
+        while (itV.hasNext()) {
+            Node vert = itV.next();
+            ArrayList<Node> adjVerts = inEdges.get(vert);
 
             // kalau key-nya adalah elemen yang mau di-remove, remove vertex
-            if (nodeEntry.getKey().equals(n)) {
-                it.remove();
+            if (vert.equals(n)) {
+                itV.remove();
             }
 
             // iterasi adjacency list setiap sudut
-            Iterator<Node> itN = adjVert.iterator();
+            Iterator<Node> itN = adjVerts.iterator();
             while(itN.hasNext()) {
-                Node vert = itN.next();
-                if (vert.equals(n)) {
+                Node adjVert = itN.next();
+                if (adjVert.equals(n)) {
                     // hapus kalo ada vertex n di dalem adjacency list
                     itN.remove();
                 }
@@ -145,7 +134,7 @@ public class Graph {
      * dipisah-pisah
      */
     public ArrayList<ArrayList<Node>> topoSort() {
-        if (outEdges.isEmpty()) {
+        if (inEdges.isEmpty()) {
             return new ArrayList<ArrayList<Node>>();
         }
 
@@ -153,28 +142,24 @@ public class Graph {
         ArrayList<ArrayList<Node>> ret = new ArrayList<>();
 
         // iterasiin vertices-nya
-        Iterator<Map.Entry<Node, ArrayList<Node>>> it =
-            outEdges.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<Node, ArrayList<Node>> nodeEntry =
-                (Map.Entry<Node, ArrayList<Node>>) it.next();
+        for (Node vert: inEdges.keySet()) {
+            ArrayList<Node> adjVert = inEdges.get(vert);
 
-            ArrayList<Node> adjVert = nodeEntry.getValue();
-
-            // kalo ga ada adjacent vertex
+            // kalo ga ada adjacent vertex, tambahin vertex tadi ke list
             if (adjVert.isEmpty()) {
-                // tambahkan vertex tadi ke list
-                takenNow.add(nodeEntry.getKey());
+                takenNow.add(vert);
             }
         }
 
         // hapus vertex yang sudah "diambil"
+        // bagian decrease
         for (Node vert : takenNow) {
             removeVertex(vert);
         }
 
-        // ulangi toposort
         ret.add(takenNow);
+        // ulangi toposort
+        // bagian conquer
         ret.addAll(topoSort());
 
         return ret;
