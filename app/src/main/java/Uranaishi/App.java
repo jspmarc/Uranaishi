@@ -30,7 +30,7 @@ public class App {
         }
     }
     public static void main(String[] args) throws IOException, FileNotFoundException {
-        System.out.println("current working directory: " + System.getProperty("user.dir"));
+        //System.out.println("current working directory: " + System.getProperty("user.dir"));
         Scanner scan = new Scanner(System.in);
         Parser fp = null;
         Graph g1 = new Graph();
@@ -41,7 +41,7 @@ public class App {
                 if (args[i].equals("-f") || args[i].equals("--file")) {
                     fp = new Parser(args[++i]);
                 } else if (args[i].equals("--help") || args[i].equals("-h")) {
-                    System.out.println("java -jar [nama jar] [--file|-f file-name] [--help|-h]");
+                    System.out.println("uranaishi [nama jar] [--file|-f file-name] [--help|-h]");
                     System.out.println("\t-f\t--file\tArgumen ini diikuti path ke file yang berisi data graf.");
                     System.out.println("\t-h\t--help\tMenuliskan bantuan ini.");
                     System.exit(0);
@@ -61,12 +61,7 @@ public class App {
         scan.close();
         fp.close();
 
-        System.out.println("Graf masukan:\n");
-        g1.print();
-
-        System.out.println("\n----------------------------\n");
         System.out.println("Hasil topological sort:\n");
-
         long start = System.nanoTime();
         ArrayList<ArrayList<Node>> nodes = g1.topoSort();
         long elapsedTime = System.nanoTime() - start;

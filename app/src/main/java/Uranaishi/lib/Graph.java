@@ -81,7 +81,7 @@ public class Graph {
 
             // tulis vertex
             if (adjacentVertexCount != 0) {
-                System.out.print(vert.getInfo() + "->");
+                System.out.print(vert.getInfo() + "<-");
             } else {
                 System.out.print(vert.getInfo());
             }
@@ -90,7 +90,7 @@ public class Graph {
             int i = 0;
             for (Node adjacentVertex : adjcentVertexes) {
                 if (i++ != adjacentVertexCount-1) {
-                    System.out.print(adjacentVertex.getInfo() + "->");
+                    System.out.print(adjacentVertex.getInfo() + "<-");
                 } else {
                     System.out.print(adjacentVertex.getInfo());
                 }

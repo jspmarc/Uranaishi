@@ -1,0 +1,110 @@
+nodemon, chokidar, glob-parent, debug, ignore-by-default, minimatch, pstree, semver, supports-color, touch, undefsafe, update-notifier.
+update-notifier, boxen, chalk, configstore, has-yarn, import-lazy, is-ci, is-installed-globally, is-npm, is-yarn-global, latest-version, pupa, semver-diff, xdg-basedir.
+chokidar, anymatch, braces, fsevents, glob-parent, is-binary-path, is-glob, normalize-path, readdirp.
+fsevents.
+anymatch, normalize-path, picomatch.
+normalize-path.
+picomatch.
+braces, fill-range.
+fill-range, to-regex-range.
+to-regex-range, is-number.
+is-number.
+glob-parent, is-glob.
+is-glob, is-extglob.
+is-extglob
+is-binary-path, binary-extensions.
+binary-extensions.
+readdirp, picomatch.
+debug, ms.
+ms.
+minimatch, brace-expansion.
+brace-expansion, balanced-match, concat-map.
+balanced-match.
+concat-map.
+ignore-by-default.
+pstree.
+semver.
+supports-color, has-flag.
+has-flag.
+touch, nopt.
+nopt, abbrev.
+abbrev.
+undefsafe, debug.
+boxen, ansi-align, camelcase, chalk, cli-boxes, string-width, term-size, type-fest, widest-line.
+camelcase.
+ansi-align, string-width.
+string-width, emoji-regex, is-fullwidth-code-point, strip-ansi.
+emoji-regex.
+is-fullwidth-code-point.
+strip-ansi, ansi-regex.
+ansi-regex.
+chalk, ansi-styles, supports-color.
+ansi-styles, @types/color-name, color-convert.
+@types/color-name.
+color-convert, color-name.
+color-name.
+has-flag.
+cli-boxes.
+term-size.
+type-fest.
+widest-line, string-width.
+configstore, dot-prop, graceful-fs, make-dir, unique-string, write-file-atomic, xdg-basedir.
+dot-prop, is-obj.
+is-obj.
+graceful-fs.
+make-dir, semver.
+unique-string, crypto-random-string.
+crypto-random-string.
+write-file-atomic, imurmurhash, is-typedarray, signal-exit, typedarray-to-buffer.
+imurmurhash.
+is-typedarray.
+signal-exit.
+typedarray-to-buffer, is-typedarray.
+xdg-basedir.
+has-yarn.
+import-lazy.
+is-ci, ci-info.
+ci-info.
+is-installed-globally, global-dirs, is-path-inside.
+global-dirs, ini.
+ini.
+is-path-inside.
+is-npm.
+is-yarn-global.
+pupa, escape-goat.
+escape-goat.
+semver-diff, semver.
+latest-version, package-json.
+package-json, got, registry-auth-token, registry-url, semver.
+registry-url, rc.
+rc, deep-extend, ini, minimist, strip-json-comments.
+deep-extend.
+minimist.
+strip-json-comments.
+registry-auth-token, rc.
+got, @sindresorhus/is, @szmarczak/http-timer, cacheable-request, decompress-response, duplexer3, get-stream, lowercase-keys, mimic-response, p-cancelable, to-readable-stream.
+@sindresorhus/is.
+duplexer3.
+lowercase-keys.
+mimic-response.
+p-cancelable.
+to-readable-stream.
+url-parse-lax, prepend-http.
+prepend-http.
+get-stream, pump.
+pump, end-of-stream, once.
+end-of-stream, once.
+once, wrappy.
+wrappy.
+decompress-response, mimic-response.
+cacheable-request, clone-response, get-stream, http-cache-semantics, keyv, lowercase-keys, normalize-url, responselike.
+responselike, lowercase-keys.
+normalize-url.
+keyv, json-buffer.
+json-buffer.
+http-cache-semantics.
+get-stream, pump.
+clone-response, mimic-response.
+mimic-response.
+@szmarczak/http-timer, defer-to-connect.
+defer-to-connect.
