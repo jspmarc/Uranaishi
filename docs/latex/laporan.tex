@@ -548,13 +548,17 @@ public class Parser {
 
 \section{Hasil Pengujian}
 \subsection{Pengujian Pertama}
-\begin{lstlisting}[caption = \textit{input}]
-C1, C3.
-C2, C1, C4.
-C3.
-C4, C1, C3.
-C5, C2, C4.
-\end{lstlisting}
+%\begin{lstlisting}[caption = \textit{input}]
+%C1, C3.
+%C2, C1, C4.
+%C3.
+%C4, C1, C3.
+%C5, C2, C4.
+%\end{lstlisting}
+\begin{figure}
+  \includegraphics[scale=0.8]{1.png}
+  \caption{\textit{input}}
+\end{figure}
 \begin{lstlisting}[caption = \textit{output}]
 Hasil topological sort:
 
@@ -575,15 +579,19 @@ Fisika.
 Stima, Matdis, Kalkulus.
 Matdis, Kalkulus.
 \end{lstlisting}
-\begin{lstlisting}[caption = \textit{output}]
-Hasil topological sort:
+%\begin{lstlisting}[caption = \textit{output}]
+%Hasil topological sort:
 
-Semester 1: Fisika, Kalkulus
-Semester 2: Matdis
-Semester 3: TBFO, Stima, Kriptografi
+%Semester 1: Fisika, Kalkulus
+%Semester 2: Matdis
+%Semester 3: TBFO, Stima, Kriptografi
 
-Waktu untuk memproses graf: 113800 nanodetik.
-\end{lstlisting}
+%Waktu untuk memproses graf: 113800 nanodetik.
+%\end{lstlisting}
+\begin{figure}
+  \includegraphics[scale=0.8]{2.png}
+  \caption{\textit{input}}
+\end{figure}
 \subsection{Pengujian Ketiga}
 \begin{lstlisting}[caption = \textit{input}]
 MA1201, MA1101.
@@ -597,14 +605,18 @@ MA1101.
 FI1101.
 KU1011.
 \end{lstlisting}
-\begin{lstlisting}[caption = \textit{output}]
-Hasil topological sort:
+%\begin{lstlisting}[caption = \textit{output}]
+%Hasil topological sort:
 
-Semester 1: KU1102, KU1011, MA1101, FI1101
-Semester 2: IF1210, KI1002, EL1200, MA1201, KU1202, FI1201
+%Semester 1: KU1102, KU1011, MA1101, FI1101
+%Semester 2: IF1210, KI1002, EL1200, MA1201, KU1202, FI1201
 
-Waktu untuk memproses graf: 178000 nanodetik.
-\end{lstlisting}
+%Waktu untuk memproses graf: 178000 nanodetik.
+%\end{lstlisting}
+\begin{figure}
+  \includegraphics[scale=0.8]{3.png}
+  \caption{\textit{input}}
+\end{figure}
 \subsection{Pengujian Keempat}
 \begin{lstlisting}[caption = \textit{input}]
 MA1101.
@@ -650,17 +662,21 @@ IF4092, IF4091.
 KU206X.
 AS2005.
 \end{lstlisting}
-\begin{lstlisting}[caption = \textit{output}]
-Hasil topological sort:
+%\begin{lstlisting}[caption = \textit{output}]
+%Hasil topological sort:
 
-Semester 1: IF3280, IF2121, KU1001, KU1024, AS2005, IF4091, MA1101, KU2071, KU1102, IF2250, IF1210, IF2240, KU206X, IF3140, KU1011, KU1202, IF2120, IF2230, IF2110, IF2130, IF2124, FI1101, IF2211
-Semester 2: MA1201, IF2210, IF4090, FI1201, IF3150, IF4092, IF3210, IF3130, IF2123, IF3141, IF3151, EL1200
-Semester 3: IF2220, IF3230, IF3250, IF3260, IF3110
-Semester 4: IF3170
-Semester 5: IF3270
+%Semester 1: IF3280, IF2121, KU1001, KU1024, AS2005, IF4091, MA1101, KU2071, KU1102, IF2250, IF1210, IF2240, KU206X, IF3140, KU1011, KU1202, IF2120, IF2230, IF2110, IF2130, IF2124, FI1101, IF2211
+%Semester 2: MA1201, IF2210, IF4090, FI1201, IF3150, IF4092, IF3210, IF3130, IF2123, IF3141, IF3151, EL1200
+%Semester 3: IF2220, IF3230, IF3250, IF3260, IF3110
+%Semester 4: IF3170
+%Semester 5: IF3270
 
-Waktu untuk memproses graf: 1129700 nanodetik.
-\end{lstlisting}
+%Waktu untuk memproses graf: 1129700 nanodetik.
+%\end{lstlisting}
+\begin{figure}
+  \includegraphics[scale=0.25]{4.png}
+  \caption{\textit{input}}
+\end{figure}
 \subsection{Pengujian Kelima}
 \begin{lstlisting}[caption = \textit{input}]
 Flask, Python, Pip.
@@ -668,16 +684,20 @@ Pip, Python.
 Python, C.
 C.
 \end{lstlisting}
-\begin{lstlisting}[caption = \textit{output}]
-Hasil topological sort:
+%\begin{lstlisting}[caption = \textit{output}]
+%Hasil topological sort:
 
-Semester 1: C
-Semester 2: Python
-Semester 3: Pip
-Semester 4: Flask
+%Semester 1: C
+%Semester 2: Python
+%Semester 3: Pip
+%Semester 4: Flask
 
-Waktu untuk memproses graf: 101700 nanodetik.
-\end{lstlisting}
+%Waktu untuk memproses graf: 101700 nanodetik.
+%\end{lstlisting}
+\begin{figure}
+  \includegraphics[scale=0.7]{5.png}
+  \caption{\textit{input}}
+\end{figure}
 \subsection{Pengujian Keenam}
 \begin{lstlisting}[caption = \textit{input}]
 MA1101.
@@ -728,20 +748,24 @@ IF4091, IF3280.
 
 IF4092, IF4091.
 \end{lstlisting}
-\begin{lstlisting}[caption = \textit{output}]
-Hasil topological sort:
+%\begin{lstlisting}[caption = \textit{output}]
+%Hasil topological sort:
 
-Semester 1: KU1001, KU1024, MA1101, KU1102, KU1011, FI1101
-Semester 2: EL1200, MA1201, IF1210, KU1202, FI1201, KI1002
-Semester 3: IF2130, IF2110, IF2124, IF2121, IF2123, IF2120
-Semester 4: IF2211, IF2240, IF2230, IF2220, IF2250, IF2210
-Semester 5: IF3150, IF3141, IF3151, IF3110, IF3130, IF3140, IF3170
-Semester 6: IF3260, IF3270, IF3210, IF3230, IF3280, IF3250
-Semester 7: IF4090, IF4091
-Semester 8: IF4092
+%Semester 1: KU1001, KU1024, MA1101, KU1102, KU1011, FI1101
+%Semester 2: EL1200, MA1201, IF1210, KU1202, FI1201, KI1002
+%Semester 3: IF2130, IF2110, IF2124, IF2121, IF2123, IF2120
+%Semester 4: IF2211, IF2240, IF2230, IF2220, IF2250, IF2210
+%Semester 5: IF3150, IF3141, IF3151, IF3110, IF3130, IF3140, IF3170
+%Semester 6: IF3260, IF3270, IF3210, IF3230, IF3280, IF3250
+%Semester 7: IF4090, IF4091
+%Semester 8: IF4092
 
-Waktu untuk memproses graf: 1668500 nanodetik.
-\end{lstlisting}
+%Waktu untuk memproses graf: 1668500 nanodetik.
+%\end{lstlisting}
+\begin{figure}
+  \includegraphics[scale=0.7]{6.png}
+  \caption{\textit{input}}
+\end{figure}
 \subsection{Pengujian Ketujuh}
 \begin{lstlisting}[caption = \textit{input}]
 A.
@@ -782,18 +806,22 @@ let, feeling, make, you, give, up.
 yOu, wanna, tell, feeling, give, up.
 down, Never, make.
 \end{lstlisting}
-\begin{lstlisting}[caption = \textit{output}]
-Hasil topological sort:
+%\begin{lstlisting}[caption = \textit{output}]
+%Hasil topological sort:
 
-Semester 1: of, commitments, thinking, A, what, i'm, full
-Semester 2: from, wouldn't, get, You, other, any, guy, this
-Semester 3: you, feeling, wanna, I'm, how, I, just, tell
-Semester 4: u, understand, Gotta, make
-Semester 5: up, gonna, Never, U, give
-Semester 6: yOu, never, Gonna, down, let
+%Semester 1: of, commitments, thinking, A, what, i'm, full
+%Semester 2: from, wouldn't, get, You, other, any, guy, this
+%Semester 3: you, feeling, wanna, I'm, how, I, just, tell
+%Semester 4: u, understand, Gotta, make
+%Semester 5: up, gonna, Never, U, give
+%Semester 6: yOu, never, Gonna, down, let
 
-Waktu untuk memproses graf: 1146200 nanodetik.
-\end{lstlisting}
+%Waktu untuk memproses graf: 1146200 nanodetik.
+%\end{lstlisting}
+\begin{figure}
+  \includegraphics[scale=0.7]{7.png}
+  \caption{\textit{input}}
+\end{figure}
 \subsection{Pengujian Kedelapan}
 \begin{lstlisting}[caption = \textit{input}]
 nodemon, chokidar, glob-parent, debug, ignore-by-default, minimatch, pstree, semver, supports-color, touch, undefsafe, update-notifier.
@@ -907,23 +935,27 @@ mimic-response.
 @szmarczak/http-timer, defer-to-connect.
 defer-to-connect.
 \end{lstlisting}
-\begin{lstlisting}[caption = \textit{output}]
-Hasil topological sort:
+%\begin{lstlisting}[caption = \textit{output}]
+%Hasil topological sort:
 
-Semester 1: xdg-basedir, camelcase, term-size, emoji-regex, to-readable-stream, abbrev, escape-goat, minimist, p-cancelable, binary-extensions, ignore-by-default, strip-json-comments, ci-info, has-flag, is-fullwidth-code-point, defer-to-connect, fsevents, concat-map, color-name, balanced-match, graceful-fs, is-extglob, prepend-http, json-buffer, type-fest, is-typedarray, is-yarn-global, http-cache-semantics, lowercase-keys, wrappy, is-number, @sindresorhus/is, picomatch, signal-exit, mimic-response, is-path-inside, is-obj, ansi-regex, @types/color-name, semver, cli-boxes, normalize-url, imurmurhash, pstree, ms, is-npm, normalize-path, crypto-random-string, ini, duplexer3, has-flag, import-lazy, deep-extend, mimic-response, has-yarn
-Semester 2: semver-diff, to-regex-range, unique-string, dot-prop, supports-color, url-parse-lax, decompress-response, clone-response, rc, readdirp, color-convert, typedarray-to-buffer, keyv, debug, global-dirs, once, is-glob, @szmarczak/http-timer, strip-ansi, responselike, anymatch, brace-expansion, pupa, is-ci, make-dir, is-binary-path, nopt
-Semester 3: ansi-styles, registry-auth-token, touch, fill-range, string-width, glob-parent, registry-url, is-installed-globally, minimatch, end-of-stream, undefsafe, write-file-atomic
-Semester 4: configstore, pump, widest-line, braces, chalk, ansi-align
-Semester 5: boxen, get-stream, get-stream, chokidar
-Semester 6: cacheable-request
-Semester 7: got
-Semester 8: package-json
-Semester 9: latest-version
-Semester 10: update-notifier
-Semester 11: nodemon
+%Semester 1: xdg-basedir, camelcase, term-size, emoji-regex, to-readable-stream, abbrev, escape-goat, minimist, p-cancelable, binary-extensions, ignore-by-default, strip-json-comments, ci-info, has-flag, is-fullwidth-code-point, defer-to-connect, fsevents, concat-map, color-name, balanced-match, graceful-fs, is-extglob, prepend-http, json-buffer, type-fest, is-typedarray, is-yarn-global, http-cache-semantics, lowercase-keys, wrappy, is-number, @sindresorhus/is, picomatch, signal-exit, mimic-response, is-path-inside, is-obj, ansi-regex, @types/color-name, semver, cli-boxes, normalize-url, imurmurhash, pstree, ms, is-npm, normalize-path, crypto-random-string, ini, duplexer3, has-flag, import-lazy, deep-extend, mimic-response, has-yarn
+%Semester 2: semver-diff, to-regex-range, unique-string, dot-prop, supports-color, url-parse-lax, decompress-response, clone-response, rc, readdirp, color-convert, typedarray-to-buffer, keyv, debug, global-dirs, once, is-glob, @szmarczak/http-timer, strip-ansi, responselike, anymatch, brace-expansion, pupa, is-ci, make-dir, is-binary-path, nopt
+%Semester 3: ansi-styles, registry-auth-token, touch, fill-range, string-width, glob-parent, registry-url, is-installed-globally, minimatch, end-of-stream, undefsafe, write-file-atomic
+%Semester 4: configstore, pump, widest-line, braces, chalk, ansi-align
+%Semester 5: boxen, get-stream, get-stream, chokidar
+%Semester 6: cacheable-request
+%Semester 7: got
+%Semester 8: package-json
+%Semester 9: latest-version
+%Semester 10: update-notifier
+%Semester 11: nodemon
 
-Waktu untuk memproses graf: 3478700 nanodetik.
-\end{lstlisting}
+%Waktu untuk memproses graf: 3478700 nanodetik.
+%\end{lstlisting}
+\begin{figure}
+  \includegraphics[scale=0.25]{8.png}
+  \caption{\textit{input}}
+\end{figure}
 
 \subsection{Tabel Penilaian}
 \begin{table}
