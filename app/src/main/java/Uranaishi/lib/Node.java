@@ -32,7 +32,25 @@ public class Node {
      * @param n2 node lain yang ingin dibandingkan dengan node "this"
      * @return true jika kedua node sama, false jika tidak
      */
-    public boolean equals(Node n2) {
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) {
+            return false;
+        }
+        if (o.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Node n2 = (Node) o;
         return info.equals(n2.info);
+    }
+
+    /**
+     * Fungsi untuk meng-override fungsi hashcode sehingga Node dapat digunakan
+     * untuk key pada collection Map
+     */
+    @Override
+    public int hashCode() {
+        return this.info.hashCode();
     }
 }
