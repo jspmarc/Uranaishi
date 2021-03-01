@@ -12,8 +12,8 @@ untuk graf baru. Hal ini dilakukan sampai graf tidak memliki sudut.
 
 ## _Prerequisite_
 * Java 15
-> (Mungkin bisa di versi sebelumnya, tapi _developer_ membuat aplikasi
-> ini di Java 15 jadi kompatibilitas di ersi lain tidak dijamin.)
+> (Mungkin bisa di versi sebelumnya, tapi _author_ membuat aplikasi ini di Java
+> 15 jadi kompatibilitas di ersi lain tidak dijamin.)
 
 ## Instalasi
 1. Unduh berkas `app.jar` di _releases_ _repository_ GitHub ini.
@@ -25,7 +25,7 @@ untuk graf baru. Hal ini dilakukan sampai graf tidak memliki sudut.
 ## Contoh
 > Asumsi direktori data dan berkas app.jar ada di satu direktori yang sama
 
-`./app -f data/grafTest7.txt`
+`java -jar app.jar -f data/grafTest7.txt`
 
 ![](docs/imgs/8.png)
 
